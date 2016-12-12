@@ -1,0 +1,9 @@
+{
+    "port": "8000",
+    "dbName": "db_a14a35_nodejs",
+    "dbHost": "mysql5015.smarterasp.net",
+    "dbUserName": "a14a35_nodejs",
+    "dbPassword": "Power@1234",
+    "recordReterived_Success_Message": "Executed Successfully",
+    "recordReterived_Failed_Message" :  "Execution Failure"
+}

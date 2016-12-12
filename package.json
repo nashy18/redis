@@ -1,0 +1,19 @@
+{
+  "name": "redis",
+  "version": "1.0.0",
+  "description": "Node Js redis client.",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "mysql": "^2.10.0",
+    "body-parser": "^1.15.2",
+	"redis": "^2.6.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "avinashk",
+  "license": "ISC"
+}
