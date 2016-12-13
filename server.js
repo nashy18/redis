@@ -50,9 +50,9 @@ handleDisconnect();
 //Initiallising my sql connection string -Ends
 
 // create a new redis client and connect to our local redis instance
-client = redis.createClient();
+//client = redis.createClient();
 // create a new redis client and connect to cloud redis instance
-//client = redis.createClient({url: '//pub-redis-17788.us-east-1-2.5.ec2.garantiadata.com:17788', password:'Power@1234'});
+client = redis.createClient({url: '//pub-redis-17788.us-east-1-2.5.ec2.garantiadata.com:17788', password:'Power@1234'});
 
 // if an error occurs, print it to the console
 client.on('error', function (err) {
