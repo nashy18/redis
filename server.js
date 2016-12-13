@@ -13,6 +13,7 @@ var appConfig = require('./data/config.json');
 var bodyParser = require("body-parser");
 var mysql = require('mysql');
 // set up the body-parser middleware
+app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 
 //Initiallising my sql connection string -Starts 
@@ -105,3 +106,8 @@ app.set('port', (process.env.PORT || 5000));
 app.listen(app.get('port'), function(){
   console.log('Server listening on port: ', app.get('port'));
 });
+
+ // define the home page route, running index.html when server runs
+ app.get('/', function (req, res) {
+     res.sendFile('/index.html');
+ })
