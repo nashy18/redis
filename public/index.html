@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="creativeinspiration.css" />
+
+<title>Redis: Key-Value No SQL Database</title>
+</head>
+
+<body>
+    <div id="page">
+		
+        <div id="header">
+        	<div id="headerTitle">Redis</div>
+            <div id="headerSubText">It is a very simple key-value database which supports large size of data storage which support different variety of data structures.</div>
+            
+        </div>
+        <div class="contentTitle"><h1>Benifits Using Redis</h1></div>
+        <div class="contentText">
+			1) It is a very simple key-value database which supports large size of data storage.<br/>
+			2) Support different variety of data structures.<br/>
+			3) Easy setting and getting data based on key name.<br/>
+			4) Auto Updating the property(key)'s value based on given time interval.<br/>
+			5) Accelerates the application performance by 10 times or even more when used for storing api responses result set.<br/>
+			6) It can be used with multiple languages like C++, C#, Java, Node Js, etc.<br/>
+        </div>
+        <div class="contentTitle"><h1>Usage</h1></div>
+        <div class="contentText">
+        I have configured Redis Server into below,
+
+1) Local System:
+
+Step 1: 
+We need to download below package file to install Redis server on windows machine,
+
+https://github.com/MSOpenTech/redis/releases
+
+(https://github.com/MSOpenTech/redis/releases/download/win-3.2.100/Redis-x64-3.2.100.msi)
+
+Step 2: 
+Install it in your local machine.
+
+
+2) Cloud :
+
+Step 1 :
+Create an account into below link,
+
+https://ww.redislabs.com
+
+Inline image 1
+
+Step 2:
+Select new Redis Subscription, and fill the appropriate fields. 
+It offers 30 MB as Free Tier Scheme.
+
+
+Credentials:
+EndPoint URL : pub-redis-17788.us-east-1-2.5.ec2.garantiadata.com:17788
+Password : Power@1234
+
+Accessing Redis :
+Currently i am using Node Js to connect with redis server. Step needs to follow are,
+
+Step 1:
+npm install redis
+
+Step 2:
+Add a dependency into your source code.
+var redis = require('redis');
+
+Step 3: 
+Create a new redis client and connect to our local redis instance.
+
+client = redis.createClient();
+
+              or
+
+Create a new redis client and connect to the cloud redis instance
+
+client = redis.createClient({url: '//pub-redis-17788.us-east-1-2.5.ec2.garantiadata.com:17788', password:'Power@1234'});
+
+Step 4:
+Include below lines of code to set data from Redis Cache 
+ 
+client.setex(<key>, <expiry_time_in_seconds>,  <value>);
+
+Step 5: 
+Include below lines of code to get data from Redis Cache 
+client.get(<key>, function(error, result) {
+      if (result) {
+           //result will contain the value stored inside the <key>
+      }
+});
+
+To demonstrate above steps, i have created a sample node js program which is performing below task,
+
+1) Making an api call.
+2) Looking for data inside Redis Cache ,if it available returning it back to client.
+3) Else querying the database and setting value inside Redis Cache for a unique key.
+4) The value inside Redis Cache will be cleared after the expiry time.
+
+Steps to run the application,
+
+1) Open CMD , run node server.js
+
+2) Open Postman App, select GET method.
+
+3) Put api url : http://localhost:5000/api/redis/<table_name>
+
+4) <table_name> can be below,
+role
+user
+gender
+document
+
+The source code is kept inside below Git Repository,
+
+https://github.com/avinashl3175/redis.git
+
+Test Results: For Fetching 1000 Records in,
+
+a)  Local Redis Server,
+
+1) Querying Database: 1065 ms.
+Inline image 2
+
+2) Querying Redis Cache : 55ms
+
+Inline image 3
+
+b) Cloud Redis Server,
+Since https://ww.redislabs.com offers free tier account, so it is taking more time while Querying Redis Cache as comapred to  Querying Database.
+        </div>       
+</div>
+        <div id="footer">Web Development by Avinash Kumar</div>
+</body>
+</html>
