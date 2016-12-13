@@ -6,7 +6,8 @@ var _request = {};
 //To Store AuthToken
 var _authToken = null; 
 // require the dependencies we installed
-var app = require('express')();
+var express = require("express");
+var app = express();
 //https://github.com/NodeRedis/node_redis
 var redis = require('redis');
 var appConfig = require('./data/config.json');
