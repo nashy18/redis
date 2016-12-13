@@ -15,17 +15,27 @@ Important Points:
 6) It can be used with multiple languages like C++, C#, Java, Node Js, etc.
 
 Links:
+
 1) https://coligo.io/nodejs-api-redis-cache/
+
 2) https://github.com/NodeRedis/node_redis
+
 3) Download for windows
+
     a) https://github.com/MSOpenTech/redis/releases
+    
     b) https://github.com/rgl/redis/downloads
+    
 4) http://stackoverflow.com/questions/6476945/how-do-i-run-redis-on-windows
 
 How to Run?
 
 1) Open CMD
+
 2) Type node server.js
+
 3) Open Postman App
+
 4) Put URL:
+
 http://localhost:5000/api/redis/role
