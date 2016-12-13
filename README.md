@@ -40,8 +40,8 @@ How to Run?
 
 If running locally:
 
-http://localhost:5000/api/redis/<tablename>
+http://localhost:5000/api/redis/'tablename'
 
 Cloud api url :
 
-https://redis-nodejs.herokuapp.com/api/redis/<tablename>
+https://redis-nodejs.herokuapp.com/api/redis/'tablename'
