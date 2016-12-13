@@ -26,111 +26,109 @@
         </div>
         <div class="contentTitle"><h1>Usage</h1></div>
         <div class="contentText">
-        I have configured Redis Server into below,
+        Redis Server Configuration into below,<br/>
 
-1) Local System:
+1) Local System:<br/>
 
-Step 1: 
-We need to download below package file to install Redis server on windows machine,
+Step 1: <br/>
+We need to download below package file to install Redis server on windows machine,<br/>
 
-https://github.com/MSOpenTech/redis/releases
+https://github.com/MSOpenTech/redis/releases<br/>
 
-(https://github.com/MSOpenTech/redis/releases/download/win-3.2.100/Redis-x64-3.2.100.msi)
+(https://github.com/MSOpenTech/redis/releases/download/win-3.2.100/Redis-x64-3.2.100.msi)<br/>
 
-Step 2: 
-Install it in your local machine.
-
-
-2) Cloud :
-
-Step 1 :
-Create an account into below link,
-
-https://ww.redislabs.com
-
-Inline image 1
-
-Step 2:
-Select new Redis Subscription, and fill the appropriate fields. 
-It offers 30 MB as Free Tier Scheme.
+Step 2: <br/>
+Install it in your local machine.<br/>
 
 
-Credentials:
-EndPoint URL : pub-redis-17788.us-east-1-2.5.ec2.garantiadata.com:17788
-Password : Power@1234
+2) Cloud :<br/>
 
-Accessing Redis :
-Currently i am using Node Js to connect with redis server. Step needs to follow are,
+Step 1 :<br/>
+Create an account into below link,<br/>
 
-Step 1:
-npm install redis
+https://ww.redislabs.com<br/>
 
-Step 2:
-Add a dependency into your source code.
-var redis = require('redis');
+Inline image 1<br/>
+
+Step 2:<br/>
+Select new Redis Subscription, and fill the appropriate fields. <br/>
+It offers 30 MB as Free Tier Scheme.<br/>
+
+
+Credentials:<br/>
+EndPoint URL : pub-redis-17788.us-east-1-2.5.ec2.garantiadata.com:17788<br/>
+Password : Power@1234<br/>
+
+Accessing Redis :<br/>
+Currently i am using Node Js to connect with redis server. Step needs to follow are,<br/>
+
+Step 1:<br/>
+npm install redis<br/>
+
+Step 2:<br/>
+Add a dependency into your source code.<br/>
+var redis = require('redis');<br/>
 
 Step 3: 
-Create a new redis client and connect to our local redis instance.
+Create a new redis client and connect to our local redis instance.<br/>
 
-client = redis.createClient();
+client = redis.createClient();<br/>
+<br/>
+              or<br/>
+<br/>
+Create a new redis client and connect to the cloud redis instance<br/>
 
-              or
+client = redis.createClient({url: '//pub-redis-17788.us-east-1-2.5.ec2.garantiadata.com:17788', password:'Power@1234'});<br/>
 
-Create a new redis client and connect to the cloud redis instance
-
-client = redis.createClient({url: '//pub-redis-17788.us-east-1-2.5.ec2.garantiadata.com:17788', password:'Power@1234'});
-
-Step 4:
-Include below lines of code to set data from Redis Cache 
+Step 4:<br/>
+Include below lines of code to set data from Redis Cache <br/>
  
-client.setex(<key>, <expiry_time_in_seconds>,  <value>);
+client.setex(<key>, <expiry_time_in_seconds>,  <value>);<br/>
 
-Step 5: 
-Include below lines of code to get data from Redis Cache 
-client.get(<key>, function(error, result) {
-      if (result) {
-           //result will contain the value stored inside the <key>
-      }
-});
+Step 5: <br/>
+Include below lines of code to get data from Redis Cache <br/>
+client.get(<key>, function(error, result) {<br/>
+      if (result) {<br/>
+           //result will contain the value stored inside the <key><br/>
+      }<br/>
+});<br/>
+<br/>
+To demonstrate above steps, i have created a sample node js program which is performing below task,<br/>
+<br/>
+1) Making an api call.<br/>
+2) Looking for data inside Redis Cache ,if it available returning it back to client.<br/>
+3) Else querying the database and setting value inside Redis Cache for a unique key.<br/>
+4) The value inside Redis Cache will be cleared after the expiry time.<br/>
+<br/>
+Steps to run the application,<br/>
+<br/>
+1) Open CMD , run node server.js<br/>
+<br/>
+2) Open Postman App, select GET method.<br/>
+<br/>
+3) Put api url : http://localhost:5000/api/redis/<table_name><br/>
+<br/>
+4) <table_name> can be below,<br/>
+role<br/>
+user<br/>
+gender<br/>
+document<br/>
+<br/>
+The source code is kept inside below Git Repository,<br/>
+<br/>
+https://github.com/avinashl3175/redis.git<br/>
 
-To demonstrate above steps, i have created a sample node js program which is performing below task,
+Test Results: For Fetching 1000 Records in,<br/>
+<br/>
+a)  Local Redis Server,<br/>
+<br/>
+1) Querying Database: 1065 ms.<br/>
+<br/>
+2) Querying Redis Cache : 55ms<br/>
+<br/>
 
-1) Making an api call.
-2) Looking for data inside Redis Cache ,if it available returning it back to client.
-3) Else querying the database and setting value inside Redis Cache for a unique key.
-4) The value inside Redis Cache will be cleared after the expiry time.
-
-Steps to run the application,
-
-1) Open CMD , run node server.js
-
-2) Open Postman App, select GET method.
-
-3) Put api url : http://localhost:5000/api/redis/<table_name>
-
-4) <table_name> can be below,
-role
-user
-gender
-document
-
-The source code is kept inside below Git Repository,
-
-https://github.com/avinashl3175/redis.git
-
-Test Results: For Fetching 1000 Records in,
-
-a)  Local Redis Server,
-
-1) Querying Database: 1065 ms.
-Inline image 2
-
-2) Querying Redis Cache : 55ms
-
-Inline image 3
-
-b) Cloud Redis Server,
-Since https://ww.redislabs.com offers free tier account, so it is taking more time while Querying Redis Cache as comapred to  Querying Database.
+b) Cloud Redis Server,<br/>
+Since https://ww.redislabs.com offers free tier account, so it is taking more time while Querying Redis Cache as comapred to  Querying Database.<br/>
         </div>       
 </div>
         <div id="footer">Web Development by Avinash Kumar</div>
