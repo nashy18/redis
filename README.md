@@ -38,4 +38,10 @@ How to Run?
 
 4) Put URL:
 
-http://localhost:5000/api/redis/role
+If running locally:
+
+http://localhost:5000/api/redis/<tablename>
+
+Cloud api url :
+
+https://redis-nodejs.herokuapp.com/api/redis/<tablename>
